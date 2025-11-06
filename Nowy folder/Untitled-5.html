@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Koszyk – MiniAllegro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #ff5a00;
+    }
+
+    .logo span {
+      color: #000;
+    }
+
+    nav.user-menu a {
+      color: #333;
+      text-decoration: none;
+      margin-left: 10px;
+      transition: color 0.3s;
+    }
+
+    nav.user-menu a:hover {
+      color: #ff5a00;
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    /* Lista produktów */
+    .cart-items {
+      flex: 2 1 600px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .cart-items h2 {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+      flex-wrap: wrap;
+    }
+
+    .cart-item img {
+      width: 100px;
+      border-radius: 10px;
+      margin-right: 15px;
+    }
+
+    .item-info {
+      flex: 2;
+      min-width: 180px;
+    }
+
+    .item-info h3 {
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .item-info p {
+      font-size: 0.9em;
+      color: #555;
+    }
+
+    .price {
+      color: #ff5a00;
+      font-weight: bold;
+      font-size: 1.1em;
+      min-width: 80px;
+      text-align: right;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .quantity button {
+      background: #ff5a00;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+
+    .quantity button:hover {
+      background: #e14e00;
+    }
+
+    .remove {
+      background: transparent;
+      border: none;
+      color: #999;
+      cursor: pointer;
+      font-size: 1.2em;
+      transition: color 0.3s;
+    }
+
+    .remove:hover {
+      color: #ff5a00;
+    }
+
+    /* Podsumowanie */
+    .summary {
+      flex: 1 1 280px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      height: fit-content;
+    }
+
+    .summary h2 {
+      margin-bottom: 15px;
+    }
+
+    .summary p {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-size: 1em;
+    }
+
+    .summary p.total {
+      font-size: 1.2em;
+      font-weight: bold;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      background: #ff5a00;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .checkout-btn:hover {
+      background: #e14e00;
+    }
+
+    footer {
+      text-align: center;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      padding: 15px;
+      margin-top: 20px;
+      color: #555;
+    }
+
+    @media (max-width: 700px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .price {
+        text-align: left;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nagłówek -->
+  <header>
+    <div class="logo">Mini<span>Allegro</span></div>
+    <nav class="user-menu">
+      <a href="index.html">Strona główna</a> |
+      <a href="#">Zaloguj się</a>
+    </nav>
+  </header>
+
+  <!-- Główna sekcja koszyka -->
+  <main>
+    <!-- Lista produktów -->
+    <section class="cart-items">
+      <h2>Twój koszyk</h2>
+
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/100" alt="Smartfon X200">
+        <div class="item-info">
+          <h3>Smartfon X200</h3>
+          <p>Kolor: czarny | Dostawa: Kurier</p>
+        </div>
+        <div class="quantity">
+          <button>-</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+        <div class="price">999 zł</div>
+        <button class="remove">&times;</button>
+      </div>
+
+      <div class="cart-item">
+        <img src="https://via.placeholder.com/100" alt="Kurtka zimowa">
+        <div class="item-info">
+          <h3>Kurtka zimowa</h3>
+          <p>Rozmiar: M | Kolor: granatowy</p>
+        </div>
+        <div class="quantity">
+          <button>-</button>
+          <span>2</span>
+          <button>+</button>
+        </div>
+        <div class="price">398 zł</div>
+        <button class="remove">&times;</button>
+      </div>
+
+    </section>
+
+    <!-- Podsumowanie -->
+    <aside class="summary">
+      <h2>Podsumowanie</h2>
+      <p><span>Wartość produktów:</span> <span>1 397 zł</span></p>
+      <p><span>Dostawa:</span> <span>0 zł</span></p>
+      <p class="total"><span>Do zapłaty:</span> <span>1 397 zł</span></p>
+      <button class="checkout-btn">Przejdź do płatności</button>
+    </aside>
+  </main>
+
+  <!-- Stopka -->
+  <footer>
+    &copy; 2025 MiniAllegro – Wszystkie prawa zastrzeżone
+  </footer>
+
+</body>
+</html>
